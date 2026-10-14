@@ -1,0 +1,34 @@
+# ==================================================
+# jvTEL — local development variables (PLACEHOLDERS ONLY)
+# --------------------------------------------------
+# Copy this file to `.dev.vars` and fill in real values for `npx wrangler dev`:
+#
+#     cp .dev.vars.example .dev.vars
+#
+# `.dev.vars` is git-ignored. NEVER commit real credentials, and never paste
+# them into README.md, wrangler.toml, or src/index.js.
+#
+# Every name below overrides the matching value in USER_CONFIG (src/index.js).
+# For deployment, use Cloudflare Secrets for the three secret values:
+#
+#     npx wrangler secret put API_KEY
+#     npx wrangler secret put TELEGRAM_BOT_TOKEN
+#     npx wrangler secret put TELEGRAM_WEBHOOK_SECRET
+# ==================================================
+
+# --- Required ---
+API_BASE_URL=https://api.example.com/v1
+API_KEY=PASTE_YOUR_API_KEY_HERE
+MODEL=your-model-name
+TELEGRAM_BOT_TOKEN=PASTE_YOUR_TELEGRAM_BOT_TOKEN_HERE
+TELEGRAM_WEBHOOK_SECRET=REPLACE_WITH_A_RANDOM_SECRET
+
+# Comma-separated numeric Telegram user IDs. Use "" for public access (risky).
+ALLOWED_USER_IDS=123456789
+
+# --- Optional (defaults shown) ---
+SYSTEM_PROMPT=You are jvTEL, a helpful assistant on Telegram. Answer in plain text.
+MAX_HISTORY_MESSAGES=12
+MAX_INPUT_CHARS=8000
+LLM_TIMEOUT_MS=30000
+RESPOND_IN_GROUPS=false
