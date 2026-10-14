@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Wrangler / build output
+.wrangler/
+dist/
+.dev.vars.tmp
+
+# REAL CREDENTIALS — never commit these.
+# .dev.vars is what `wrangler dev` reads locally; only the .example file is tracked.
+.dev.vars
+.env
+.env.*
+!.env.example
+!.dev.vars.example
+*.pem
+*.key
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+.idea/
+.vscode/

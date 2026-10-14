@@ -1,0 +1,47 @@
+# ==================================================
+# jvTEL — Cloudflare Worker configuration
+# --------------------------------------------------
+# Choose ONE wrangler config format; this project uses wrangler.toml.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
+#
+# Nothing secret belongs in this file. Secrets are set with:
+#   npx wrangler secret put API_KEY
+#   npx wrangler secret put TELEGRAM_BOT_TOKEN
+#   npx wrangler secret put TELEGRAM_WEBHOOK_SECRET
+#
+# No `nodejs_compat` flag is needed on purpose: the Worker only uses standard
+# Web APIs (fetch, Request, Response, URL, AbortSignal), so it stays compatible
+# with the plain Workers runtime.
+# ==================================================
+
+name = "jvtel"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+# --------------------------------------------------
+# Optional: non-secret overrides for USER_CONFIG.
+# Anything set here wins over the value in src/index.js.
+# --------------------------------------------------
+# [vars]
+# API_BASE_URL = "https://api.openai.com/v1"
+# MODEL = "gpt-4o-mini"
+# ALLOWED_USER_IDS = "111111111,222222222"
+# SYSTEM_PROMPT = "You are a helpful AI assistant."
+# MAX_HISTORY_MESSAGES = "12"
+# MAX_INPUT_CHARS = "8000"
+# LLM_TIMEOUT_MS = "30000"
+# RESPOND_IN_GROUPS = "false"
+
+# --------------------------------------------------
+# Optional: persistent conversation history.
+#
+#   1. npx wrangler kv namespace create CHAT_HISTORY
+#   2. copy the printed id into the block below
+#   3. uncomment the block and redeploy
+#
+# Without it the bot still works; history is then kept only in the Worker
+# isolate's memory and is lost when the isolate is recycled.
+# --------------------------------------------------
+# [[kv_namespaces]]
+# binding = "CHAT_HISTORY"
+# id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
